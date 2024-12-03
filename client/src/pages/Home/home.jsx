@@ -7,7 +7,7 @@ import Footer from "@/component/common component/footer/footer";
 // Hooks
 import { Context } from "@/context";
 import { useContext, useEffect, useMemo } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // Home Component
 import CountdownTimer from "@/component/home component/Timer/countDown";
@@ -28,7 +28,6 @@ import MoneyBackGuarantee from "../../assets/About assets/money-back-guarantee.s
 function HomePage() {
   const location = useLocation();
   const { products } = useContext(Context);
-  const Navigate = useNavigate();
 
   // Memoize randomized products
   const shuffledProducts = useMemo(() => {

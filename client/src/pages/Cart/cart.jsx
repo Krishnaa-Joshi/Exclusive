@@ -4,15 +4,13 @@ import NavBar from "@/component/common component/Navbar/navbar";
 import Path from "@/component/common component/pages path/path";
 import Footer from "@/component/common component/footer/footer";
 
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Context } from "@/context";
 import CardProduct from "@/component/cart component/cart Product/cartProduct";
 import { useNavigate } from "react-router-dom";
 
 function CartPage() {
-  const { products,editCart,setEditCart, wishlistProducts, setWhishlistProducts,cartProducts,
-    setCartProducts } = useContext(Context);
+  const { editCart,setEditCart,cartProducts } = useContext(Context);
   const navigate = useNavigate();
 
   const totalPrice = cartProducts.reduce(
