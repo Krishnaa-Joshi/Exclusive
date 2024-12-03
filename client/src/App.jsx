@@ -7,14 +7,10 @@ import WishListPage from "./pages/wishList/wishList";
 import UserAccoutPage from "./pages/Account/account";
 import NotFoundPage from "./pages/Not Found/404";
 import AuthPage from "./pages/Auth Page/AuthPage";
-import { useContext } from "react";
-import { Context } from "./context";
 import CheckOutPage from "./pages/checkOut/checkOutPage";
 import ProductDetailsPage from "./pages/Product details page/productDetailPage";
 
 function App() {
-
-  const {isLogin} = useContext(Context);
 
   return (
     <>
