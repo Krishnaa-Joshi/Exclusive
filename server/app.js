@@ -357,8 +357,8 @@ app.post("/login", async (req, res) => {
 
 // MongoDb uri
 const uri =
-  "mongodb+srv://krishnajos01:BUGIzaBnivtCLNeb@cluster0.1geo8uv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
+  `mongodb+srv://${process.env.DB_USERNAME}:BUGIzaBnivtCLNeb@cluster0.1geo8uv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+  
 // Server Start
 async function run() {
   try {
@@ -374,9 +374,3 @@ async function run() {
 }
 
 run();
-
-/* 
-OAuth - 
-client ID - 642371436832-pvker6ijrbved1shllvpokruhtst0ebj.apps.googleusercontent.com
-Client Secret - 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
-*/
