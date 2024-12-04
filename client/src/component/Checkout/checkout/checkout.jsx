@@ -13,15 +13,7 @@ import Selected from "../../../assets/Checkout assets/radioCheck.svg";
 import CardDetails from "../Card Details/CardDetails";
 
 function Checkout() {
-  const {
-    products,
-    editCart,
-    setEditCart,
-    wishlistProducts,
-    setWhishlistProducts,
-    cartProducts,
-    setCartProducts,
-  } = useContext(Context);
+  const { cartProducts } = useContext(Context);
 
   const totalPrice = cartProducts.reduce(
     (sum, product) => sum + product.price * product.quantity,
@@ -119,7 +111,6 @@ function Checkout() {
             >
               Apply Coupon
             </button>
-
             {!couponValid && (
               <p className="text-red-500 mt-2 font-medium">Invalid Coupon</p>
             )}

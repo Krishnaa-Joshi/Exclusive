@@ -4,23 +4,37 @@ import NavBar from "@/component/common component/Navbar/navbar";
 import Path from "@/component/common component/pages path/path";
 import Footer from "@/component/common component/footer/footer";
 
-import { useContext } from "react";
+// Hooks
+import { useContext, useState } from "react";
 import { Context } from "@/context";
-import CardProduct from "@/component/cart component/cart Product/cartProduct";
 import { useNavigate } from "react-router-dom";
 
+// Component
+import CardProduct from "@/component/cart component/cart Product/cartProduct";
+
 function CartPage() {
-  const { editCart,setEditCart,cartProducts } = useContext(Context);
+  const { editCart, setEditCart, cartProducts } = useContext(Context);
   const navigate = useNavigate();
+  const [couponValid, setCouponValid] = useState(true);
+
+  const handleApplyCoupon = () => {
+    console.log("Coupon button clicked");
+    setCouponValid(false);
+
+    // Reset coupon validity back to true after 5 seconds
+    setTimeout(() => {
+      setCouponValid(true);
+    }, 5000);
+  };
 
   const totalPrice = cartProducts.reduce(
     (sum, product) => sum + product.price * product.quantity,
     0
   );
 
-  const handleUpdateCart = ()=>{
+  const handleUpdateCart = () => {
     setEditCart(!editCart);
-  }
+  };
 
   return (
     <div>
@@ -43,19 +57,25 @@ function CartPage() {
       </div>
       <div>
         {cartProducts.map((product) => (
-           <CardProduct key={product.id} product={product} />
+          <CardProduct key={product.id} product={product} />
         ))}
       </div>
 
       <div className="flex justify-between my-5 mx-24">
         <div>
-          <button className="border-2 border-[#808080] rounded-md p-3 w-48 font-semibold" onClick={()=>navigate("/")}>
+          <button
+            className="border-2 border-[#808080] rounded-md p-3 w-48 font-semibold"
+            onClick={() => navigate("/")}
+          >
             Return To Shop
           </button>
         </div>
         <div>
-          <button className="border-2 border-[#808080] rounded-md p-3 w-44 font-semibold" onClick={handleUpdateCart}>
-            {editCart ? "Cancel" : "Update Cart" }
+          <button
+            className="border-2 border-[#808080] rounded-md p-3 w-44 font-semibold"
+            onClick={handleUpdateCart}
+          >
+            {editCart ? "Cancel" : "Update Cart"}
           </button>
         </div>
       </div>
@@ -64,12 +84,21 @@ function CartPage() {
         <input
           type="text"
           placeholder="Coupon Code"
-          className="focus:outline-none border-2 border-[#252525] rounded-sm p-2.5 w-72 mr-5"
+          className="focus:outline-none border-2 border-[#252525] rounded-sm p-2.5 w-72 mr-5 h-12"
         />
-        <button className="bg-[#DB4444] text-white rounded-sm p-3 w-48 ">
-          Apply Coupon
-        </button>
+        <div className="flex flex-col items-center">
+          <button
+            className="bg-[#DB4444] text-white rounded-sm p-3 w-48 cursor-pointer"
+            onClick={handleApplyCoupon}
+          >
+            Apply Coupon
+          </button>
+          {!couponValid && (
+            <p className="text-red-500 mt-2 font-medium">Invalid Coupon</p>
+          )}
+        </div>
       </div>
+
       <div className="flex justify-end p-20 relative bottom-48">
         <div className="border-2 border-black rounded-sm w-[30vw] p-4">
           <p className="font-semibold text-2xl ">Cart Total</p>
@@ -85,11 +114,16 @@ function CartPage() {
             <p>Total: </p>
             <p>{`$${totalPrice.toFixed(2)}`}</p>
           </div>
+
           <div className="flex justify-center">
-            <button className="bg-[#DB4444] text-white rounded-sm p-3 w-60" onClick={()=>navigate("/checkout")}>
+            <button
+              className="bg-[#DB4444] text-white rounded-sm p-3 w-60 cursor-pointer"
+              onClick={() => navigate("/checkout")}
+            >
               Procees To Checkout
             </button>
           </div>
+
         </div>
       </div>
 
