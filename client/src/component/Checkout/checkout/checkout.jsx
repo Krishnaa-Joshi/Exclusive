@@ -11,9 +11,11 @@ import MasterCard from "../../../assets/Checkout assets/masterCard.svg";
 import NotSelceted from "../../../assets/Checkout assets/radio.svg";
 import Selected from "../../../assets/Checkout assets/radioCheck.svg";
 import CardDetails from "../Card Details/CardDetails";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const { cartProducts } = useContext(Context);
+  const navigate = useNavigate();
 
   const totalPrice = cartProducts.reduce(
     (sum, product) => sum + product.price * product.quantity,
@@ -116,7 +118,7 @@ function Checkout() {
             )}
           </div>
         </div>
-        <button className="bg-[#DB4444] text-white rounded-sm p-3 w-44 Place Order my-3">
+        <button className="bg-[#DB4444] text-white rounded-sm p-3 w-44 Place Order my-3" onClick={()=>navigate("/orderPlaced")}>
           Place Order
         </button>
       </div>

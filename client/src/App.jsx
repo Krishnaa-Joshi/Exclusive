@@ -9,6 +9,7 @@ import NotFoundPage from "./pages/Not Found/404";
 import AuthPage from "./pages/Auth Page/AuthPage";
 import CheckOutPage from "./pages/checkOut/checkOutPage";
 import ProductDetailsPage from "./pages/Product details page/productDetailPage";
+import OrderPlaced from "./pages/Order Place/orderPlaced";
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
         <Route path="/signUp" element={<AuthPage/>} />
         <Route path="/account" element={<UserAccoutPage />} />
         <Route path="/checkout" element={<CheckOutPage/>} />
-        <Route path="/OrderPlaced" element={<CheckOutPage/>} />
+        <Route path="/orderPlaced" element={<OrderPlaced/>} />
         <Route path="/product/:id" element={<ProductDetailsPage/>}/>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
