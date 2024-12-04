@@ -3,7 +3,7 @@ import HeroSection from "@/component/home component/Hero Section/hero";
 import NavBar from "@/component/common component/Navbar/navbar";
 import Path from "@/component/common component/pages path/path";
 import { Context } from "@/context";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ProfileDetail from "@/component/Account/Profile/Profile detail/profileDetail";
 import ProfileEditingForm from "@/component/Account/Profile/Profile Form/profileEdit";
 import AddressForm from "@/component/Account/Address/Address form/addressForm";
@@ -131,5 +131,3 @@ function UserAccoutPage() {
 }
 
 export default UserAccoutPage;
-
-// AIzaSyC85-iXeY1DAKrTT3rul2Iqm4U1ouy0v10 - api key
